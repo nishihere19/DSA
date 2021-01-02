@@ -1,7 +1,7 @@
 # Data-Structures and Algos:rocket:
 
   
-I made this repo to maintain my codes in one place. Any contributions are more welcome. If you find any error/issue/suggestions, feel free to add in the open an issue!!
+I made this repo to maintain my codes in one place. Any contributions are more welcome. If you find any error/issue/suggestions, feel free to open an issue!!
 
 
 
