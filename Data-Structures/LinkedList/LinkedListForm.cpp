@@ -108,6 +108,82 @@ void print_reverse(Node *Head){
     print_reverse((Head)->next);
     cout<<Head->data<<endl;
 }
+
+void pop_at_start(Node **Head){
+    Node *temp= new Node();
+    temp=*Head;
+    if(temp==NULL){
+        cout<<"LINKEDLIST IS EMPTY!"<<endl;
+        return;
+    }
+    *Head=temp->next;
+    cout<<"The element being deleted "<<temp->data<<endl;
+    delete(temp);
+    return;
+}
+
+void pop_at_end(Node **Head){
+    Node *temp= new Node();
+    Node *t= new Node();
+    temp=*Head;
+    if(temp==NULL){
+        cout<<"LINKEDLIST IS EMPTY!"<<endl;
+        return;
+    }
+    while(temp->next->next!=NULL) temp=temp->next;
+    t=temp->next;
+    temp->next=NULL;
+    cout<<"The element being deleted "<<t->data<<endl;
+    delete(t);
+    return;
+}
+
+void floyyd_loop_detect(Node **Head){
+    Node *fast= new Node();
+    Node *slow= new Node();
+    fast=*Head; slow=*Head;
+    while(fast!=NULL&&fast->next!=NULL&&slow!=NULL) {
+        if(fast==slow){
+            cout<<"Loop detected"<<endl;
+            return;
+        }
+        fast=fast->next->next;
+        slow=slow->next;
+    }
+
+}
+
+void push_to_make_loop(Node **Head, int data, int val){
+    Node* temp= new Node();
+    temp=*Head;
+    int length=0;
+    //cout<<length<<endl;
+    while(temp->next!=NULL){
+        temp=temp->next;
+        length++;
+        //cout<<temp->data<<endl;
+    }
+    //cout<<length<<endl;
+    Node* t= new Node();
+    t->data=data;
+    temp->next=t;
+    t->next= NULL;
+    length++;
+    int l=1;
+    if(length<val){
+        cout<<"The length is less than the desired value"<<endl;
+        return;
+    }
+    temp=*Head;
+    while(l<val&&temp!=NULL){
+        temp=temp->next;
+        l++;
+    }
+    cout<<"New node pointing to "<<temp->data<<endl;
+    t->next=temp;
+    return;
+}
+
  int main(){
      struct Node *head= NULL;
      push_at_end(&head,20);
@@ -144,5 +220,14 @@ void print_reverse(Node *Head){
      }
      cout<<"Lets print the reversed LinkedList: "<<endl;
      print_reverse(head);
-
+     pop_at_start(&head);
+     pop_at_end(&head);
+     temp = head;
+     cout<<"The linkedlist is:"<<endl;
+     while(temp!=NULL) {
+         cout<<temp->data<<endl;
+         temp= (temp->next);
+     }
+     push_to_make_loop(&head,5,2);
+     floyyd_loop_detect(&head);
  }
