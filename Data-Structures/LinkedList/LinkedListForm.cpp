@@ -101,6 +101,13 @@ void reverse(Node **Head){
     curr->next=prev;
 }
 
+void print_reverse(Node *Head){
+    //Node* temp= new Node();
+    //temp=Head;
+    if(Head==NULL) return;
+    print_reverse((Head)->next);
+    cout<<Head->data<<endl;
+}
  int main(){
      struct Node *head= NULL;
      push_at_end(&head,20);
@@ -135,5 +142,7 @@ void reverse(Node **Head){
          cout<<temp->data<<endl;
          temp= (temp->next);
      }
+     cout<<"Lets print the reversed LinkedList: "<<endl;
+     print_reverse(head);
 
  }
