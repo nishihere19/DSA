@@ -141,15 +141,18 @@ void pop_at_end(Node **Head){
 void floyyd_loop_detect(Node **Head){
     Node *fast= new Node();
     Node *slow= new Node();
-    fast=*Head; slow=*Head;
+    slow=*Head; fast=slow->next->next;
     while(fast!=NULL&&fast->next!=NULL&&slow!=NULL) {
         if(fast==slow){
             cout<<"Loop detected"<<endl;
             return;
         }
+        //cout<<"fast at "<<fast->data<<endl;
+        //cout<<"slow at "<<slow->data<<endl;
         fast=fast->next->next;
         slow=slow->next;
     }
+    cout<<"No loop detected"<<endl;
 
 }
 
@@ -184,6 +187,44 @@ void push_to_make_loop(Node **Head, int data, int val){
     return;
 }
 
+void hash_loop_detect(Node **Head){
+    unordered_set<Node*>hash;
+    Node* temp=new Node();
+    temp= *Head;
+    while(temp!=NULL){
+        if(hash.find(temp)!=hash.end()){
+            cout<<"Loop detected at "<<temp->data<<endl;
+            return;
+        }
+        hash.insert(temp);
+        temp=temp->next;
+    }
+    cout<<"No loop detected"<<endl;
+}
+
+void check_pal_byStack(Node **Head){
+    stack<int> check;
+    Node *temp= new Node();
+    temp= *Head;
+    while(temp!=NULL){
+        check.push(temp->data);
+        
+         //cout<<temp->data<<endl;
+         temp=temp->next;
+    }
+    temp=*Head;
+    while(temp->next!=NULL){
+        if(check.top()!=temp->data){
+            cout<<"Not Palindrome!"<<endl;
+            return;
+        }
+        //cout<<temp->data<<endl;
+        check.pop();
+        temp=temp->next;
+    }
+    cout<<"Palindrome!"<<endl;
+    return;
+}
  int main(){
      struct Node *head= NULL;
      push_at_end(&head,20);
@@ -228,6 +269,17 @@ void push_to_make_loop(Node **Head, int data, int val){
          cout<<temp->data<<endl;
          temp= (temp->next);
      }
+     //push_to_make_loop(&head,5,2);
+     //floyyd_loop_detect(&head);
+     //hash_loop_detect(&head);
+     check_pal_byStack(&head);
+     push_at_end(&head,20);
+     push_at_end(&head,10);
+     push_at_end(&head,30);
+     check_pal_byStack(&head);
+     floyyd_loop_detect(&head);
+     hash_loop_detect(&head);
      push_to_make_loop(&head,5,2);
      floyyd_loop_detect(&head);
+     hash_loop_detect(&head);
  }
