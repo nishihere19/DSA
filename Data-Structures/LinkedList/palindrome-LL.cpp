@@ -61,6 +61,29 @@ void pop_at_end(Node **Head){
     return;
 }
 
+void check_pal_byStack(Node **Head){
+    stack<int> check;
+    Node *temp= new Node();
+    temp= *Head;
+    while(temp!=NULL){
+        check.push(temp->data);
+        
+         //cout<<temp->data<<endl;
+         temp=temp->next;
+    }
+    temp=*Head;
+    while(temp->next!=NULL){
+        if(check.top()!=temp->data){
+            cout<<"Not Palindrome!"<<endl;
+            return;
+        }
+        //cout<<temp->data<<endl;
+        check.pop();
+        temp=temp->next;
+    }
+    cout<<"Palindrome!"<<endl;
+    return;
+}
  int main(){
      struct Node *head= NULL;
      push_at_end(&head,20);
@@ -85,5 +108,16 @@ void pop_at_end(Node **Head){
          cout<<temp->data<<endl;
          temp= (temp->next);
      }
+     check_pal_byStack(&head);
+     push_at_end(&head,10);
+     push_at_end(&head,20);
+     push_at_end(&head,40);
+     temp = head;
+     cout<<"Now the linkedlist is:"<<endl;
+     while(temp!=NULL) {
+         cout<<temp->data<<endl;
+         temp= (temp->next);
+     }
+     check_pal_byStack(&head);
      return 0;
  }

@@ -32,34 +32,34 @@ void push_at_end(Node **Head, int data){
     
 }
 
-void pop_at_start(Node **Head){
-    Node *temp= new Node();
-    temp=*Head;
-    if(temp==NULL){
-        cout<<"LINKEDLIST IS EMPTY!"<<endl;
-        return;
+
+void reverse(Node **Head){
+    Node *prev=new Node();
+    Node *next= new Node();
+    Node *curr= new Node();
+    curr=*Head;
+    next=curr->next;
+    prev= NULL;
+    while(next!=NULL){
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+        *Head=next;
+        next=next->next;
+        //cout<<prev->data<<curr->data<<next->data<<endl;
     }
-    *Head=temp->next;
-    cout<<"The element being deleted "<<temp->data<<endl;
-    delete(temp);
-    return;
+    curr->next=prev;
 }
 
-void pop_at_end(Node **Head){
-    Node *temp= new Node();
-    Node *t= new Node();
-    temp=*Head;
-    if(temp==NULL){
-        cout<<"LINKEDLIST IS EMPTY!"<<endl;
-        return;
-    }
-    while(temp->next->next!=NULL) temp=temp->next;
-    t=temp->next;
-    temp->next=NULL;
-    cout<<"The element being deleted "<<t->data<<endl;
-    delete(t);
-    return;
+void print_reverse(Node *Head){
+    //Node* temp= new Node();
+    //temp=Head;
+    if(Head==NULL) return;
+    print_reverse((Head)->next);
+    cout<<Head->data<<endl;
 }
+
 
  int main(){
      struct Node *head= NULL;
@@ -77,13 +77,15 @@ void pop_at_end(Node **Head){
          cout<<temp->data<<endl;
          temp= (temp->next);
      }
-     pop_at_start(&head);
-     pop_at_end(&head);
+
+    reverse(&head);
      temp = head;
-     cout<<"The linkedlist is:"<<endl;
+     cout<<"The reversed LinkedList is:"<<endl;
      while(temp!=NULL) {
          cout<<temp->data<<endl;
          temp= (temp->next);
      }
+     cout<<"Lets print the reverse of the reversed LinkedList: "<<endl;
+     print_reverse(head);
      return 0;
  }

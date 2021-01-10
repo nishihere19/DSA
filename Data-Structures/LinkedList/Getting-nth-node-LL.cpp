@@ -32,34 +32,59 @@ void push_at_end(Node **Head, int data){
     
 }
 
-void pop_at_start(Node **Head){
-    Node *temp= new Node();
-    temp=*Head;
+void nth_node_from_end(Node **Head, int n){
+    int length=0; //TO CALCULATE LENGTH OF LINKEDLIST
+    Node *temp = *Head;
     if(temp==NULL){
-        cout<<"LINKEDLIST IS EMPTY!"<<endl;
+        cout<<"LinkedList was empty";
         return;
     }
-    *Head=temp->next;
-    cout<<"The element being deleted "<<temp->data<<endl;
-    delete(temp);
+    while(temp->next!=NULL){
+        temp=temp->next;
+        length++;
+    }
+    temp=*Head;
+    if(n>length){
+        cout<<"Length of linkedlist is less than input"<<endl;
+        return;
+    }
+    else{
+        for(int i=0;i<length-n+1;i++){
+            temp=temp->next;
+        }
+        cout<<temp->data<<endl;
+
+    }
+    return;
+}
+void nth_node_from_start(Node **Head, int n){
+    int length=0; //TO CALCULATE LENGTH OF LINKEDLIST
+    Node *temp = *Head;
+    if(temp==NULL){
+        cout<<"LinkedList was empty";
+        return;
+    }
+    while(temp->next!=NULL){
+        temp=temp->next;
+        length++;
+    }
+    temp=*Head;
+    if(n>length){
+        cout<<"Length of linkedlist is less than input"<<endl;
+        return;
+    }
+    else{
+        for(int i=0;i<n-1;i++){
+            temp=temp->next;
+        }
+        cout<<temp->data<<endl;
+    }
     return;
 }
 
-void pop_at_end(Node **Head){
-    Node *temp= new Node();
-    Node *t= new Node();
-    temp=*Head;
-    if(temp==NULL){
-        cout<<"LINKEDLIST IS EMPTY!"<<endl;
-        return;
-    }
-    while(temp->next->next!=NULL) temp=temp->next;
-    t=temp->next;
-    temp->next=NULL;
-    cout<<"The element being deleted "<<t->data<<endl;
-    delete(t);
-    return;
-}
+
+
+
 
  int main(){
      struct Node *head= NULL;
@@ -77,13 +102,14 @@ void pop_at_end(Node **Head){
          cout<<temp->data<<endl;
          temp= (temp->next);
      }
-     pop_at_start(&head);
-     pop_at_end(&head);
-     temp = head;
-     cout<<"The linkedlist is:"<<endl;
-     while(temp!=NULL) {
-         cout<<temp->data<<endl;
-         temp= (temp->next);
-     }
-     return 0;
+
+    cout<<"The nth nodes based on input are"<<endl;
+    nth_node_from_start(&head,2);
+    nth_node_from_end(&head,2);
+    nth_node_from_end(&head,1);
+    nth_node_from_start(&head,1);
+    nth_node_from_end(&head,5);
+    nth_node_from_start(&head,5);
+
+    return 0;
  }
