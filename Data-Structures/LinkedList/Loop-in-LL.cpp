@@ -115,6 +115,44 @@ void detect_remove_loop(Node **Head){
     cout<<"No loop detected"<<endl;
 }
 
+void detect_remove_loop_floyyd(Node **Head){
+    Node* fast=new Node;
+    Node* slow= new Node;
+    slow= *Head;
+    fast= slow->next->next;
+    int flag=0;
+    while(fast->next->next!=NULL&&slow->next!=NULL){
+        if(fast==slow) {
+        flag=1;
+        break;
+        }
+        else{
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+    }
+    if(flag==1){
+        cout<<"Loop detected"<<endl;
+        slow=*Head;
+    }
+    Node* temp=new Node;
+    temp=* Head;
+    while(flag==1){
+        if(slow==fast){
+            temp->next=NULL;
+            cout<<"Loop Removed!"<<endl;
+            flag=0;
+        }
+        else{
+            temp=fast;
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+    }
+
+
+}
+
  int main(){
      struct Node *head= NULL;
      push_at_end(&head,20);
@@ -143,6 +181,16 @@ void detect_remove_loop(Node **Head){
      floyyd_loop_detect(&head);
      hash_loop_detect(&head);
      detect_remove_loop(&head);
+     temp = head;
+     cout<<"The linkedlist after loop removal is:"<<endl;
+     while(temp!=NULL) {
+         cout<<temp->data<<endl;
+         temp= (temp->next);
+     }
+     cout<<"Made a loop at node 2"<<endl;
+     push_to_make_loop(&head,5,2);
+     detect_remove_loop_floyyd(&head);
+ 
      temp = head;
      cout<<"The linkedlist after loop removal is:"<<endl;
      while(temp!=NULL) {
