@@ -63,7 +63,7 @@ int main(void)
         cin>>ch;
         switch (ch)
         {
-        case 'a':
+        case 'e':
             cout<<"Enter element to be added."<<endl;
             cin>>c;
             q.enqueue(c); 
