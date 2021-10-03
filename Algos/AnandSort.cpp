@@ -1,3 +1,6 @@
+/* This Algorithm is based on arrays index matching, it matches the each element with index and then assigned that elemet to that index in this
+way every element got sorted in asecending order */
+
 #include<iostream>
 using namespace std;
 int main(){
