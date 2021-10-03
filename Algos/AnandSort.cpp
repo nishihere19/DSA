@@ -20,7 +20,7 @@ for(i=0;i<n;i++){
     }
 }
 for(i=0;i<100;i++){
-    if(A[i]!=0){
+    if(A[i]!=0){  /* the indexes which were not assigned with element that were assigned with 0, so to not print 0 and print only element for that */
 cout<<A[i]<<" "; }
 }
 return 0;
