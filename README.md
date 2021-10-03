@@ -14,13 +14,13 @@ Follow these steps:hammer: for contributing:
 
 :green_heart:Fork the repo.
 
-:pushpin:Create a separate branch for any bug/feature with branch name: branch_<feature_name>
+:pushpin:Create a separate branch for any bug/feature with branch name: <algo/data-structure-name>
 
-:white_check_mark:Commit once a feature is updated/bug is fixed.
+:white_check_mark:Commit once a program is complete.
 
 :pencil2:Fetch for any changes in the original repo by creating an upstream using:
 
->git remote add upstream https://github.com/amar-rokade/collegestudentworld
+>git remote add upstream git@github.com:nishihere19/DSA.git
 
 >git fetch upstream
 
@@ -43,7 +43,7 @@ Kindly maintain a clean code with proper comments.
 
 Commit messages should be written carefully and describe the changes made.
 
-Create separate PR for a single feature update/bug fix.
+Create separate PR for a single program update/bug fix.
   
 
   
