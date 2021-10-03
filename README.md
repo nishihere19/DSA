@@ -51,3 +51,11 @@ Create separate PR for a single program update/bug fix.
 # :white_check_mark:All copyrights are reserved
 
 The code is not for production.:construction_worker:
+
+# :contributors
+
+ - nishihere19
+ - R-Arpita
+ - kartik-ey1
+ - abhay-lal
+ - AcousticCh
