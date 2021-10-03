@@ -52,7 +52,7 @@ Create separate PR for a single program update/bug fix.
 
 The code is not for production.:construction_worker:
 
-# :contributors
+# :star:contributors
 
  - nishihere19
  - R-Arpita
