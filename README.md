@@ -54,8 +54,6 @@ The code is not for production.:construction_worker:
 
 # :star:contributors
 
- - nishihere19
- - R-Arpita
- - kartik-ey1
- - abhay-lal
- - AcousticCh
+<a href="https://github.com/nishihere19/DSA/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=nishihere19/DSA" />
+</a>
